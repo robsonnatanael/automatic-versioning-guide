@@ -6,5 +6,11 @@
   "repository": "https://github.com/robsonnatanael/learning-versioning",
   "author": "Robson Natanael",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
+  }
 }
