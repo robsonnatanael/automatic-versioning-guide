@@ -1,0 +1,10 @@
+{
+  "name": "learning-versioning",
+  "version": "1.0.0",
+  "description": "learning versioning semantic",
+  "main": "index.js",
+  "repository": "https://github.com/robsonnatanael/learning-versioning",
+  "author": "Robson Natanael",
+  "license": "MIT",
+  "private": true
+}
