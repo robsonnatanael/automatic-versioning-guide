@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.3",
