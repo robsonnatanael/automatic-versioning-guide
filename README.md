@@ -96,7 +96,7 @@ yarn add @semantic-release/git @semantic-release/changelog --dev
 - :memo: [config file example](.releaserc.json)
 - edite `package.json` and add `release script`
 
-```json
+```js
 // package.json
 
 {
