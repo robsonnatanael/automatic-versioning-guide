@@ -1,8 +1,28 @@
-# Semantic Release Configuration
+<h1 align="center">Automatic Versioning Guide</h1>
 
-## devDependencies
+<p align="center">  
+    <img alt="Version" src="https://img.shields.io/github/v/tag/robsonnatanael/automatic-versioning-guide">
+    <img alt="Stars" src="https://img.shields.io/github/stars/robsonnatanael/automatic-versioning-guide">    
+    <img alt="Issues" src="https://img.shields.io/github/issues/robsonnatanael/automatic-versioning-guide?logoColor=1DA1F2">  
+  </p>
+  <p align="center">
+    <a href="#about">About</a> &#xa0; | &#xa0;
+    <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
+    <a href="#configuration">Configuration</a> &#xa0; | &#xa0;
+    <a href="https://github.com/robsonnatanael" target="_blank">Author</a>
+  </p>
 
-> :warning: git installation is a prerequisite
+# About
+
+This is a quick guide on how to implement automatic semantic versioning using husky.js, commitlint, semantic release and github actions.
+
+# Requirements
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+
+# Configuration
 
 ### **[HuskyJS](https://typicode.github.io/husky/#/)**
 
@@ -110,6 +130,19 @@ yarn add @semantic-release/git @semantic-release/changelog --dev
 
 4. `CI` configuration [:link:](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration)
 
-- [:link:](https://github.com/features/actions) GitHub Actions
+   - [:link:](https://github.com/features/actions) GitHub Actions
 
-- :memo: [config file example](.github/workflows/automatic-releases.yml)
+   - :memo: [config file example](.github/workflows/automatic-releases.yml)
+
+<div align="right">
+
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+
+</div>
+
+# Author
+
+[<img src="https://avatars.githubusercontent.com/u/49655780?s=460&u=2370fd9f777a0de1fdbfcf79a3789a9b3327b1c3&v=4" width=100><br><sub>Robson Natanael :rocket:</sub>](https://www.robsonnatanael.com.br)
+
+[![Linkedin Badge](https://img.shields.io/badge/-Robson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/robsonnatanael)](https://www.linkedin.com/in/robsonnatanael)
+[![Twitter Badge](https://img.shields.io/badge/-@robsonnatanael-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/robsonnatanael)](https://twitter.com/robsonnatanael)
