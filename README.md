@@ -1,4 +1,4 @@
-<h1 align="center">Automatic Versioning Guide<h1>
+<h1 align="center">Automatic Versioning Guide</h1>
 
 <p align="center">  
     <img alt="Version" src="https://img.shields.io/github/v/tag/robsonnatanael/automatic-versioning-guide">
