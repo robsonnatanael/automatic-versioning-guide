@@ -109,7 +109,7 @@ yarn add @semantic-release/git @semantic-release/changelog --dev
 
 - Create a [.releaserc](.releaserc.json) file, written in YAML, with optional extensions:  `.yaml` / `.yml` / `.json` / `.js`
 - :memo: [config file example](.releaserc.json)
-- edite `package.json` and add `release script`
+- edit `package.json` and add `release script`
 
 ```js
 // package.json
