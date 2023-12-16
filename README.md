@@ -18,48 +18,53 @@ This is a quick guide on how to implement automatic semantic versioning using hu
 
 # Requirements
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com/)
+- [git](https://git-scm.com/)
+- [node.js](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/) or [npm*](https://www.npmjs.com/)
+
+> **_NOTE:_**  If you choose to use npm, replace `yarn` with `npm run` in the command to install dependencies and when executing the release script in the [workflow](.github/workflows/releases.yml).
 
 # Configuration
 
 ### **[HuskyJS](https://typicode.github.io/husky/#/)**
 
-1. Install `husky`
+#### 1. Install `husky`
 
-```shell
+```bash
 yarn add husky --dev
 ```
 
-2. Enable Git hooks
+#### 2. Enable Git hooks
 
-```shell
+```bash
 yarn husky install
 ```
 
-3. To automatically have Git hooks enabled after install, edit `package.json`
+#### 3. To automatically have Git hooks enabled after install, edit `package.json`
 
 ```js
 // package.json
 
 {
   "private": true, // <- your package is private, you only need postinstall
+  ...
   "scripts": {
+    ...
     "postinstall": "husky install"
   }
+  ...
 }
 ```
 
 ### **[Commitlint](https://commitlint.js.org/#/)**
 
-1. Install `commitlint` [:link:](https://commitlint.js.org/#/guides-local-setup)
+#### 1. Install `commitlint` [:link:](https://commitlint.js.org/#/guides-local-setup)
 
-```shell
+```bash
 yarn add @commitlint/cli @commitlint/config-conventional --dev
 ```
 
-2. Configure
+#### 2. Configure
 
 ```js
 // commitlint.config.js
@@ -69,50 +74,40 @@ module.exports = {
 };
 ```
 
-3. Add hook
+#### 3. Add hook
 
-```shell
+```bash
 yarn husky add .husky/commit-msg 'yarn commitlint --edit $1'
-```
-
-4. Test simple usage
-   For a first simple usage test of commitlint you can do the following:
-
-```shell
-npx commitlint --from HEAD~1 --to HEAD --verbose
 ```
 
 ### **[Semantic Release](https://semantic-release.gitbook.io/semantic-release/usage/installation)**
 
-1. Install `semantic-release`
+#### 1. Install `semantic-release`
 
-```shell
+```bash
 yarn add semantic-release --dev
 ```
 
-2. Install `plugins` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/plugins)
+#### 2. Install `plugins` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/plugins)
 
 - Default plugins
 
   These four plugins are already part of semantic-release and are listed in order of execution. They do not have to be installed separately:
 
-```shell
-"@semantic-release/commit-analyzer"
-"@semantic-release/release-notes-generator"
-"@semantic-release/npm"
-"@semantic-release/github"
-```
+  - [@semantic-release/commit-analyzer](https://github.com/semantic-release/commit-analyzer)
+  - [@semantic-release/release-notes-generator](https://github.com/semantic-release/release-notes-generator)
+  - [@semantic-release/npm](https://github.com/semantic-release/npm)
+  - [@semantic-release/github](https://github.com/semantic-release/github)
 
 - Additional plugins
 
-```shell
+```bash
 yarn add @semantic-release/git @semantic-release/changelog --dev
 ```
 
-3. semantic-release `configuration` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
+#### 3. semantic-release `configuration` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
 
-- A .releaserc file, written in YAML or JSON, with optional extensions: `.yaml` / `.yml` / `.json` / `.js`
-
+- Create a [.releaserc](.releaserc.json) file, written in YAML, with optional extensions:  `.yaml` / `.yml` / `.json` / `.js`
 - :memo: [config file example](.releaserc.json)
 - edite `package.json` and add `release script`
 
@@ -120,29 +115,36 @@ yarn add @semantic-release/git @semantic-release/changelog --dev
 // package.json
 
 {
-  // ...
+  ...
   "scripts": {
+    ...
     "release": "semantic-release"
   }
-  // ...
+  ...
 }
 ```
 
-4. `CI` configuration [:link:](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration)
+#### 4. Set up Continuous Integration [:link:](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration)
 
-   - [:link:](https://github.com/features/actions) GitHub Actions
+Create a workflow with Continuous Integration processes to be executed whenever a new change is sent to the `main` branch, see an [example here](.github/workflows/releases.yml).
 
-   - :memo: [config file example](.github/workflows/automatic-releases.yml)
+### Optional
 
-<div align="right">
+Run linters against staged git files and don't let errors slip into your code base
 
-[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+#### 1. Install [lint-staged](https://github.com/lint-staged/lint-staged)
 
-</div>
+```bash
+yarn add lint-staged --dev
+```
 
-# Author
+#### 2. Set up the `pre-commit` git hook to run lint-staged
 
-[<img src="https://avatars.githubusercontent.com/u/49655780?s=460&u=2370fd9f777a0de1fdbfcf79a3789a9b3327b1c3&v=4" width=100><br><sub>Robson Natanael :rocket:</sub>](https://www.robsonnatanael.com.br)
+```bash
+yarn husky add .husky/pre-commit 'npx lint-staged'
+```
 
-[![Linkedin Badge](https://img.shields.io/badge/-Robson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/robsonnatanael)](https://www.linkedin.com/in/robsonnatanael)
-[![Twitter Badge](https://img.shields.io/badge/-@robsonnatanael-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/robsonnatanael)](https://twitter.com/robsonnatanael)
+#### 3. Install some linters, like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
+
+#### 4. Configure lint-staged to run linters and other tasks:
+- see an [example file](.lintstagedrc)
