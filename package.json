@@ -10,19 +10,24 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "husky install",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "prepare": "husky"
   },
   "engines": {
-    "node": "^18.x"
+    "node": "^22.x"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/js": "^9.22.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "semantic-release": "^22.0.12"
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "3.5.3",
+    "semantic-release": "^24.2.3",
+    "typescript-eslint": "^8.26.1"
   }
 }

@@ -20,9 +20,9 @@ This is a quick guide on how to implement automatic semantic versioning using hu
 
 - [git](https://git-scm.com/)
 - [node.js](https://nodejs.org/en/)
-- [yarn](https://yarnpkg.com/) or [npm*](https://www.npmjs.com/)
+- [npm](https://www.npmjs.com/) or [yarn\*](https://yarnpkg.com/)
 
-> **_NOTE:_**  If you choose to use npm, replace `yarn` with `npm run` in the command to install dependencies and when executing the release script in the [workflow](.github/workflows/releases.yml).
+> **_NOTE:_** If you choose to use npm, replace `npm` and `npm run` with `yarn` in the command to install dependencies and when executing the release script in the [workflow](.github/workflows/releases.yml).
 
 # Configuration
 
@@ -31,29 +31,17 @@ This is a quick guide on how to implement automatic semantic versioning using hu
 #### 1. Install `husky`
 
 ```bash
-yarn add husky --dev
+# npm
+npm install --save-dev husky
+
+# yarn
+yarn add --dev husky
 ```
 
-#### 2. Enable Git hooks
+#### 2. Setting up husky in project
 
 ```bash
-yarn husky install
-```
-
-#### 3. To automatically have Git hooks enabled after install, edit `package.json`
-
-```js
-// package.json
-
-{
-  "private": true, // <- your package is private, you only need postinstall
-  ...
-  "scripts": {
-    ...
-    "postinstall": "husky install"
-  }
-  ...
-}
+npx husky init
 ```
 
 ### **[Commitlint](https://commitlint.js.org/#/)**
@@ -61,23 +49,23 @@ yarn husky install
 #### 1. Install `commitlint` [:link:](https://commitlint.js.org/#/guides-local-setup)
 
 ```bash
-yarn add @commitlint/cli @commitlint/config-conventional --dev
+# npm
+npm install --save-dev @commitlint/{cli,config-conventional}
+
+# yarn
+yarn add --dev @commitlint/{cli,config-conventional}
 ```
 
-#### 2. Configure
+#### 2. Configuration
 
-```js
-// commitlint.config.js
-
-module.exports = {
-  extends: ["@commitlint/config-conventional"],
-};
+```bash
+echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
 ```
 
 #### 3. Add hook
 
 ```bash
-yarn husky add .husky/commit-msg 'yarn commitlint --edit $1'
+echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ```
 
 ### **[Semantic Release](https://semantic-release.gitbook.io/semantic-release/usage/installation)**
@@ -85,7 +73,11 @@ yarn husky add .husky/commit-msg 'yarn commitlint --edit $1'
 #### 1. Install `semantic-release`
 
 ```bash
-yarn add semantic-release --dev
+# npm
+npm install --save-dev semantic-release
+
+# yarn
+yarn add --dev semantic-release
 ```
 
 #### 2. Install `plugins` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/plugins)
@@ -102,13 +94,17 @@ yarn add semantic-release --dev
 - Additional plugins
 
 ```bash
-yarn add @semantic-release/git @semantic-release/changelog --dev
+# npm
+npm install --save-dev @semantic-release/git @semantic-release/changelog
+
+# yarn
+yarn add --dev @semantic-release/git @semantic-release/changelog
 ```
 
 #### 3. semantic-release `configuration` [:link:](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
 
-- Create a [.releaserc](.releaserc.json) file, written in YAML, with optional extensions:  `.yaml` / `.yml` / `.json` / `.js`
-- :memo: [config file example](.releaserc.json)
+- Create a [.releaserc](.releaserc) file, written in YAML, with optional extensions: `.yaml` / `.yml` / `.json` / `.js`
+- :memo: [config file example](.releaserc)
 - edit `package.json` and add `release script`
 
 ```js
@@ -135,16 +131,37 @@ Run linters against staged git files and don't let errors slip into your code ba
 #### 1. Install [lint-staged](https://github.com/lint-staged/lint-staged)
 
 ```bash
-yarn add lint-staged --dev
+# npm
+npm install --save-dev lint-staged
+
+#yarn
+yarn add --dev lint-staged
 ```
 
 #### 2. Set up the `pre-commit` git hook to run lint-staged
 
 ```bash
-yarn husky add .husky/pre-commit 'npx lint-staged'
+echo "npx lint-staged" > .husky/pre-commit
 ```
 
 #### 3. Install some linters, like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
 
+```bash
+# prettier
+# npm
+npm install --save-dev --save-exact prettier
+
+# yarn
+yarn add --dev --exact prettier
+
+# eslint
+# npm
+npm init @eslint/config@latest
+
+# yarn
+yarn create @eslint/config
+```
+
 #### 4. Configure lint-staged to run linters and other tasks:
+
 - see an [example file](.lintstagedrc)

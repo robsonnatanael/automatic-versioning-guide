@@ -12,12 +12,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "^18.x"
+          node-version: "^22.x"
 
       - name: install dependencies
-        run: yarn install
+        run: npm install
 
       - name: run release
-        run: yarn release
+        run: npm run release
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
