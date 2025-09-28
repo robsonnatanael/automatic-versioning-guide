@@ -1,6 +1,6 @@
 {
   "name": "automatic-versioning-guide",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "This is a quick guide on how to implement automatic semantic versioning using husky.js, commitlint, semantic release and github actions.",
   "repository": "https://github.com/robsonnatanael/automatic-versioning-guide",
   "author": {

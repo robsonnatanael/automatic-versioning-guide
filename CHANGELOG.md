@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/robsonnatanael/automatic-versioning-guide/compare/v1.2.0...v1.3.0) (2025-09-28)
+
+
+### Features
+
+* update dependencies and configs ([#16](https://github.com/robsonnatanael/automatic-versioning-guide/issues/16)) ([b58658c](https://github.com/robsonnatanael/automatic-versioning-guide/commit/b58658c3995d6862716c5e83010ff4cfe7428b77))
+
 # [1.2.0](https://github.com/robsonnatanael/automatic-versioning-guide/compare/v1.1.0...v1.2.0) (2025-03-19)
 
 
